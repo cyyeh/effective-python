@@ -14877,10 +14877,55 @@ b&#39;bar&#39;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Item-4:-Prefer-Interpolated-F-Strings-Over-C-style-Format-Strings-and-str.format">Item 4: Prefer Interpolated F-Strings Over C-style Format Strings and <code>str.format</code><a class="anchor-link" href="#Item-4:-Prefer-Interpolated-F-Strings-Over-C-style-Format-Strings-and-str.format">&#182;</a></h3>
+<h3 id="Item-4:-Prefer-Interpolated-F-Strings-Over-C-style-Format-Strings-and-str.format">Item 4: Prefer Interpolated F-Strings Over C-style Format Strings and <code>str.format</code><a class="anchor-link" href="#Item-4:-Prefer-Interpolated-F-Strings-Over-C-style-Format-Strings-and-str.format">&#182;</a></h3><ul>
+<li>C-style format strings that use the % operator suffer from a variety of gotchas and verbosity problems.</li>
+<li>The str.format method introduces some useful concepts in its formatting specifiers mini language, but it otherwise repeats the mistakes of C-style format strings and should be avoided.</li>
+<li>F-strings are a new syntax for formatting values into strings that solves the biggest problems with C-style format strings.</li>
+<li>F-strings are succinct yet powerful because they allow for arbitrary Python expressions to be directly embedded within format specifiers.</li>
+</ul>
+
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">places</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mf">1.23456</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;My number is </span><span class="si">{</span><span class="n">number</span><span class="si">:</span><span class="s1">.</span><span class="si">{</span><span class="n">places</span><span class="si">}</span><span class="s1">f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>My number is 1.235
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15394,10 +15439,79 @@ Coprime
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Item-10:-Prevent-Repetition-with-Assignment-Expressions">Item 10: Prevent Repetition with Assignment Expressions<a class="anchor-link" href="#Item-10:-Prevent-Repetition-with-Assignment-Expressions">&#182;</a></h3>
+<h3 id="Item-10:-Prevent-Repetition-with-Assignment-Expressions">Item 10: Prevent Repetition with Assignment Expressions<a class="anchor-link" href="#Item-10:-Prevent-Repetition-with-Assignment-Expressions">&#182;</a></h3><ul>
+<li>Assignment expressions use the walrus operator (:=) to both assign and evaluate variable names in a single expression, thus reducing repetition.</li>
+<li>When an assignment expression is a subexpression of a larger expression, it must be surrounded with parentheses.</li>
+<li>Although switch/case statements and do/while loops are not available in Python, their functionality can be emulated much more clearly by using assignment expressions.</li>
+</ul>
+
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fresh_fruit</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;apple&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;banana&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;lemon&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">make_lemonade</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">out_of_stock</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">slice_bananas</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">make_cider</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">make_smoothies</span><span class="p">(</span><span class="n">pieces</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="n">count</span> <span class="o">:=</span> <span class="n">fresh_fruit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lemon&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">make_lemonade</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">out_of_stock</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">:=</span> <span class="n">fresh_fruit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">pieces</span> <span class="o">=</span> <span class="n">slice_bananas</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">to_enjoy</span> <span class="o">=</span> <span class="n">make_smoothies</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span>
+<span class="k">elif</span> <span class="p">(</span><span class="n">count</span> <span class="o">:=</span> <span class="n">fresh_fruit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="n">to_enjoy</span> <span class="o">=</span> <span class="n">make_cider</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">count</span> <span class="o">:=</span> <span class="n">fresh_fruit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lemon&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">to_enjoy</span> <span class="o">=</span> <span class="n">make_lemonade</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">to_enjoy</span> <span class="o">=</span> <span class="s1">&#39;Nothing&#39;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
